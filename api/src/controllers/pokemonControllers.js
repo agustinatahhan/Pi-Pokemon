@@ -1,4 +1,4 @@
-const { Pokemon } = require("../db");
+const { Pokemon, Type } = require("../db");
 const axios = require("axios");
 
 const getAll = async () => {
@@ -9,12 +9,12 @@ const getAll = async () => {
 }
 
 const getAllDb = async () => {
-    const pokemonDb = await Pokemon.findAll();
+    const pokemonDb = await Pokemon.findAll({include: Type});
     return pokemonDb
 }
 
 const getAllApi = async () => {
-    const api = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=25");
+    const api = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=30");
     const data = api.data.results;
     const dataMap = data.map(dat => dat.url);
     const responses = await Promise.all(dataMap.map(url => axios.get(url)))
@@ -30,7 +30,7 @@ const getAllApi = async () => {
             attack: stats[1].base_stat,
             defense: stats[2].base_stat,
             image: sprites.other.dream_world.front_default,
-            types: types.map(t => t.type.name)
+            types: types.map(t => t.type)
         }
         return pok;
     })
@@ -43,10 +43,11 @@ const getName = async (name) => {
     
     
     const getPokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-    const {forms, sprites} = getPokemons.data;
+    const {forms, sprites, types} = getPokemons.data;
     const pok = {
         name: forms[0].name,
-        image: sprites.other.home.front_default
+        image: sprites.other.dream_world.front_default,
+        types: types.map(t => t.type.name)
     }
     
     const allNames = dbName.concat(pok);
@@ -61,10 +62,18 @@ const getDbId = async (id) => {
 
 const getApiId = async (id) => {
     const api = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const {forms, sprites} = api.data;
+    const {forms, sprites, height, weight, types, stats} = api.data;
     const pok = {
+        id: id,
         name: forms[0].name,
-        image: sprites.other.home.front_default
+        height: height,
+        weight: weight,
+        speed: stats[5].base_stat,
+        life: stats[0].base_stat,
+        attack: stats[1].base_stat,
+        defense: stats[2].base_stat,
+        image: sprites.other.dream_world.front_default,
+        types: types.map(t => t.type.name)
     }
     return pok;
 

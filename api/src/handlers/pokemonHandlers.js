@@ -1,6 +1,6 @@
 const axios = require("axios");
 const {getAll, getName, getDbId, getApiId, createPok} = require("../controllers/pokemonControllers");
-const { Pokemon, Types } = require("../db");
+const { Pokemon } = require("../db");
 
 const getAllPokemons = async (req, res) => {
     const { name } = req.query;
@@ -28,7 +28,7 @@ const getPokemonId = async (req, res) => {
 }
 
 const createPokemon = async (req, res) => {
-    const {id, name, life, speed, attack, defense, type, weight, height, image} = req.body;
+    const {id, name, life, speed, attack, defense, types, weight, height, image} = req.body;
     try {
         const newPokemon = await Pokemon.create({
             id,
@@ -39,13 +39,12 @@ const createPokemon = async (req, res) => {
             defense,
             weight,
             height,
-            image
+            image,
+            types
         })
-    
-        let typesDB = await Types.findAll({where : {name: type}});
        
-        await newPokemon.addTypes(typesDB);
-        
+        await newPokemon.addTypes(types);
+
         return res.status(200).json("Pokemon creado");
 
     } catch (error) {
