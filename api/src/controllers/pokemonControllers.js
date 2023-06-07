@@ -9,8 +9,28 @@ const getAll = async () => {
 }
 
 const getAllDb = async () => {
-    const pokemonDb = await Pokemon.findAll({include: Type});
-    return pokemonDb
+    // const pokemonDb = await Pokemon.findAll({include: Type});
+    // return pokemonDb
+    const dataDB = await Pokemon.findAll({ include: Type });
+
+    const dataBasePokemons = dataDB?.map((element) => {
+      const types = element.dataValues.types.map((type) => type.name).join(" ");
+  
+      return {
+        id: element.dataValues.id,
+        name: element.dataValues.name,
+        life: element.dataValues.life,
+        attack: element.dataValues.attack,
+        defense: element.dataValues.defense,
+        speed: element.dataValues.speed,
+        height: element.dataValues.height,
+        weight: element.dataValues.weight,
+        image: element.dataValues.image,
+        types,
+        createdInDb: true,
+      };
+    });
+    return dataBasePokemons;
 }
 
 const getAllApi = async () => {
@@ -30,7 +50,8 @@ const getAllApi = async () => {
             attack: stats[1].base_stat,
             defense: stats[2].base_stat,
             image: sprites.other.dream_world.front_default,
-            types: types.map(t => t.type)
+            types: types.map(t => t.type.name).join(" "),
+            createdInDb: false
         }
         return pok;
     })
@@ -38,26 +59,81 @@ const getAllApi = async () => {
 }
 
 const getName = async (name) => {
+    // const dbName = await Pokemon.findAll({ where: {name} });
     
-    const dbName = await Pokemon.findAll( { where: { name: name.toLowerCase() } });
+    // const getPokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    // const {forms, sprites, types} = getPokemons.data;
+    // const pok = [{
+    //     name: forms[0].name,
+    //     image: sprites.other.dream_world.front_default,
+    //     types: types.map(t => t.type.name)
+    // }]
+        
     
+    // const all = dbName.concat(pok);
+    // return all
+    const dataBasePokemons = await Pokemon.findAll({
+        where: {
+          name
+        },
+        include: Type
+      });
     
-    const getPokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-    const {forms, sprites, types} = getPokemons.data;
-    const pok = {
-        name: forms[0].name,
-        image: sprites.other.dream_world.front_default,
-        types: types.map(t => t.type.name)
-    }
+      const db = dataBasePokemons?.map((element) => {
+        const types = element.dataValues.types.map((type) => type.name).join(" ");
     
-    const allNames = dbName.concat(pok);
-    return allNames;
-    
+        return {
+          id: element.dataValues.id,
+          name: element.dataValues.name,
+          life: element.dataValues.life,
+          attack: element.dataValues.attack,
+          defense: element.dataValues.defense,
+          speed: element.dataValues.speed,
+          height: element.dataValues.height,
+          weight: element.dataValues.weight,
+          image: element.dataValues.image,
+          types,
+          createdInDb: true,
+        };
+      });
+      
+
+    const apiPokemon = await getAllApi();
+
+    const filterPokemon = await apiPokemon.filter((element) =>
+        element.name.toLowerCase().includes(name.toLowerCase())
+    );
+
+    return [...db, ...filterPokemon];
 }
 
+
+// const allNames = dbName.concat(pok);
 const getDbId = async (id) => {
-    const db = await Pokemon.findByPk(id);
-    return db;
+    
+      const pokemon = await Pokemon.findByPk(id, { include: Type });
+      const {name, life, attack, defense, height, weight, speed, image, types} = pokemon.dataValues;
+      let formattedTypes;
+      if (Array.isArray(types) && types.length > 1) {
+        formattedTypes = types.map(type => type.name).join(" ");
+      } else if (Array.isArray(types) && types.length === 1) {
+        formattedTypes = [types[0].name];
+      } else {
+        formattedTypes = [];
+      }
+      return {
+          id,
+          name,
+          life,
+          attack,
+          defense,
+          weight,
+          height,
+          speed,
+          image,
+          types: formattedTypes,
+          
+        }
 }
 
 const getApiId = async (id) => {

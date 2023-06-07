@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
-import { filterName, filterByAttack } from "../../redux/actions/actions";
+import { filterName, filterByAttack, filterCreated, filterTypes } from "../../redux/actions/actions";
 
 const CardsContainer = () => {
 
@@ -24,6 +24,18 @@ const CardsContainer = () => {
         setOrden(event.target.value)
     }
 
+    const filterByCreated = (event) => {
+        event.preventDefault();
+        dispatch(filterCreated(event.target.value));
+        setOrden(event.target.value)
+    }
+
+    const filterByTypes = (event) => {
+        dispatch(filterByTypes(event.target.value));
+        setOrden(event.target.value)
+    }
+
+
     return(
         <div>
             <div>
@@ -36,6 +48,17 @@ const CardsContainer = () => {
                     <option value="best">Best Attack</option>
                     <option value="worst">Worst Attack</option>
                 </select>
+
+                <select onChange={(event) => filterByCreated(event)}>
+                    <option value="all">All</option>
+                    <option value="created">Created</option>
+                    <option value="api">Api</option>
+                </select>
+
+                <select>
+                    <option></option>
+                </select>
+
 
             </div>
             <div className={style.container}>
@@ -52,7 +75,7 @@ const CardsContainer = () => {
                                 weight={weight}
                                 attack={attack}
                                 defense={defense}
-                                types={types?.map((v) => v.name).join(' / ')}
+                                types={types}
                                 life={life}
                                 image={image}
                             />

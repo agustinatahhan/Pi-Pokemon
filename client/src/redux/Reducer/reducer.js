@@ -4,7 +4,9 @@ import {
     GET_DETAILS,
     CLEAN_DETAILS,
     FILTER_NAME,
-    FILTER_ATTACK
+    FILTER_ATTACK,
+    FILTER_CREATED,
+    FILTER_TYPES
     
 } from "../action-types/action-types";
 
@@ -76,12 +78,20 @@ const reducer = (state = initialState, {type, payload}) => {
                 allPokemons: filteredAttack
             }
 
+            case FILTER_CREATED:
+                const allPokemons = state.allPokemons;
+                const filterCreated = payload === "created" ? allPokemons.filter(element => element.createdInDb) : allPokemons.filter(element => !element.createdInDb);
+                return{
+                    ...state,
+                    pokemons: payload === "all" ? state.allPokemons : filterCreated
+                }
+            
+            case FILTER_TYPES:
 
-        
 
-        default: return{
-            ...state
-        }
+            default: return{
+                ...state
+            }
     }
 }
 

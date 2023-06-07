@@ -5,3 +5,4 @@ export const CLEAN_DETAILS = "CLEAN_DETAILS";
 export const FILTER_NAME = "FILTER_NAME";
 export const FILTER_ATTACK = "FILTER_ATTACK";
 export const FILTER_CREATED = "FILTER_CREATED";
+export const FILTER_TYPES = "FILTER_TYPES";

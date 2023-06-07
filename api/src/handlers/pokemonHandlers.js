@@ -1,11 +1,10 @@
 const axios = require("axios");
-const {getAll, getName, getDbId, getApiId, createPok} = require("../controllers/pokemonControllers");
+const {getAll, getName, getDbId, getApiId} = require("../controllers/pokemonControllers");
 const { Pokemon } = require("../db");
 
 const getAllPokemons = async (req, res) => {
     const { name } = req.query;
     try {
-        
         const findName = name ? await getName(name) : await getAll();
         return res.status(200).json(findName);
         
@@ -17,9 +16,10 @@ const getAllPokemons = async (req, res) => {
 
 const getPokemonId = async (req, res) => {
     const { id } = req.params;
+    console.log(id)
     try {
         const response = isNaN(id) ? await getDbId(id) : await getApiId(id);
-            
+            console.log(response);
         return res.status(200).json(response);
         
     } catch (error) {

@@ -18,6 +18,10 @@ const Details = () => {
 
     const { name, speed, attack, defense, life, types, height, weight, image} = details;
 
+    // if (Array.isArray(types)) {
+    //     types = types.join(" "); // join array elements with a space separator
+    // }
+
     return(
         <div>
             <h2>{name}</h2>

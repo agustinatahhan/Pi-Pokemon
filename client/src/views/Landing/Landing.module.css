@@ -1,0 +1,9 @@
+.background{
+    background-image: url(../../Img/orange.JPG);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    object-fit: contain;
+    opacity: .9;
+}
