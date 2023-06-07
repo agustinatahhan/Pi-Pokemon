@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTypes } from "../../redux/actions/actions";
+
 const Form = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTypes())
+    })
+
     return(
         <div>
             <form>

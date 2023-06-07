@@ -1,6 +1,6 @@
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import CardsContainer from "../../Components/CardsContainer/CardsContainer";
-import { getAll } from "../../redux/actions/actions";
+import { getAll, getTypes } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
@@ -9,6 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getAll())
+        dispatch(getTypes())
     }, []);
 
  return(

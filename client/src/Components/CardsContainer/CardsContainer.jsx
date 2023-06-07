@@ -9,7 +9,9 @@ const CardsContainer = () => {
     const dispatch = useDispatch();
 
     const pokemons = useSelector(state => state.pokemons);
-   
+    const types = useSelector(state => state.allTypes);
+    // console.log(types)
+
     const [orden, setOrden] = useState("");
 
     const filterNameAd = (event) => {
@@ -31,7 +33,7 @@ const CardsContainer = () => {
     }
 
     const filterByTypes = (event) => {
-        dispatch(filterByTypes(event.target.value));
+        dispatch(filterTypes(event.target.value));
         setOrden(event.target.value)
     }
 
@@ -55,10 +57,14 @@ const CardsContainer = () => {
                     <option value="api">Api</option>
                 </select>
 
-                <select>
-                    <option></option>
+                <select onChange={(event) => filterByTypes(event)}>
+                    <option value="all">Select Type</option>
+                    {types.map((type, index) => (
+                        <option key={index} value={type}>
+                            {type}
+                        </option>
+                    ))}
                 </select>
-
 
             </div>
             <div className={style.container}>

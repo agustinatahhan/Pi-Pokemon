@@ -3,6 +3,7 @@ import {
     GET_NAME,
     GET_DETAILS,
     CLEAN_DETAILS,
+    GET_TYPES,
     FILTER_NAME,
     FILTER_ATTACK,
     FILTER_CREATED,
@@ -14,6 +15,7 @@ let initialState = {
     pokemons: [],
     allPokemons : [],
     pokemonDetails: {},
+    allTypes: [],
     filteredPokemons: [],
 
 }
@@ -42,6 +44,11 @@ const reducer = (state = initialState, {type, payload}) => {
             pokemonDetails: {}
         }
 
+        case GET_TYPES: return{
+            ...state,
+            allTypes: payload
+        }
+        
         case FILTER_NAME:
             
             let filtered = payload === "ascendent" ?
@@ -87,7 +94,15 @@ const reducer = (state = initialState, {type, payload}) => {
                 }
             
             case FILTER_TYPES:
-
+                const allTypes = state.allPokemons;
+                const filteredTypes =
+                  payload === "all"
+                    ? allTypes
+                    : allTypes.filter((el) => el.types.includes(payload));
+                return {
+                  ...state,
+                  pokemons: filteredTypes,
+                };
 
             default: return{
                 ...state
