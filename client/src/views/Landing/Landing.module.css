@@ -1,9 +1,13 @@
 .background{
-    background-image: url(../../Img/orange.JPG);
+    /* background: url(../../Img/fondo3.png), url(../../Img//descarga-removebg-preview.png); */
+    background-image: url(../../Img/fondo1.JPG);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-blend-mode: multiply; */
     height: 100vh;
-    object-fit: contain;
+    object-fit: cover;
     opacity: .9;
+    width: 100vw;
+    height: 100vh;
 }

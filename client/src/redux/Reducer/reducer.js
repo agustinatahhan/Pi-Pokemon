@@ -4,6 +4,7 @@ import {
     GET_DETAILS,
     CLEAN_DETAILS,
     GET_TYPES,
+    POST_POKEMON,
     FILTER_NAME,
     FILTER_ATTACK,
     FILTER_CREATED,
@@ -47,6 +48,10 @@ const reducer = (state = initialState, {type, payload}) => {
         case GET_TYPES: return{
             ...state,
             allTypes: payload
+        }
+
+        case POST_POKEMON: return{
+            ...state
         }
         
         case FILTER_NAME:

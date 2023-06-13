@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 function App() {
 
   const location = useLocation();
+  
 
   return (
     <div className="App">
@@ -20,7 +21,7 @@ function App() {
       <Route path='/create' element={<Form/>}/>
       <Route path='/details/:id' element={<Details/>}/>
      </Routes>
-      
+  
     </div>
   );
 }

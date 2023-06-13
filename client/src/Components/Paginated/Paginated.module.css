@@ -1,0 +1,33 @@
+:root{
+    --nude: #DBCFC3;
+    --acqua:#D3E3D6;
+    --rose: #EFC4B9;
+    --peach: #FDBC96;
+    --lavande: #DAC2CF;
+    --rosenude: #E0C9BC; 
+
+}
+
+.ul{
+    cursor: pointer;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+.li{
+    list-style-type: none;
+    background-color: var(--lavande) ;
+    margin-right: .5rem;
+    border-radius: 4rem;
+    width: 4rem;
+    scale: 1
+}
+
+.li a {
+    display: block;
+    width: 100%;
+  }

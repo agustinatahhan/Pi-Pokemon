@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    
+}
+
+.container input{
+    width: 10rem;
+    
+}
+
+.container select{
+    width: 10rem;
+}
+
+.slider{
+    width: 200px;
+    margin: 10px 0;
+    
+}
+
+.sliderContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sliderContainer span {
+    margin-left: 10px;
+    margin-right: 10px;;
+  }

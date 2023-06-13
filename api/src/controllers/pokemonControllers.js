@@ -34,7 +34,7 @@ const getAllDb = async () => {
 }
 
 const getAllApi = async () => {
-    const api = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=30");
+    const api = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=60");
     const data = api.data.results;
     const dataMap = data.map(dat => dat.url);
     const responses = await Promise.all(dataMap.map(url => axios.get(url)))

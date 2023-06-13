@@ -43,8 +43,16 @@ export const getTypes = () => {
     return async function(dispatch){
         const response = await axios.get("http://localhost:3001/type");
         const data = response.data;
-        const map = data.map(element => element.name);
+        // const map = data.map(element => element.name);
+        const map = data.map(element => element);
         dispatch({type: GET_TYPES, payload: map})
+    }
+}
+
+export const postPokemon = (input) => {
+    return async function(){
+        const response = await axios.post("http://localhost:3001/pokemon", input);
+        return response;
     }
 }
 
