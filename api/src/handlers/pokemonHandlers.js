@@ -44,7 +44,6 @@ const createPokemon = async (req, res) => {
         })
        
         await newPokemon.addTypes(types);
-
         return res.status(200).json("Pokemon creado");
 
     } catch (error) {

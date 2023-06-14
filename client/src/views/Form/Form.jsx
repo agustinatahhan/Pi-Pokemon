@@ -80,7 +80,7 @@ const Form = () => {
     }
     
     const removeType = (event, index) => {
-        event.preventDefault(); // prevent form submission
+        event.preventDefault();
         const newType = [...input.types];
         newType.splice(index, 1);
         setInput({ ...input, types: newType });
@@ -177,7 +177,7 @@ const Form = () => {
                     <label>Types:</label>
                     <select onChange={(event) => handleSelect(event)}>
                         {types.map((type) => (
-                            <option key={type.id} value={type.name}>
+                            <option key={type.id} value={type.id}>
                                 {type.name}
                             </option>
                         ))}

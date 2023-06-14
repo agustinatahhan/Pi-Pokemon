@@ -149,7 +149,7 @@ const getApiId = async (id) => {
         attack: stats[1].base_stat,
         defense: stats[2].base_stat,
         image: sprites.other.dream_world.front_default,
-        types: types.map(t => t.type.name)
+        types: types.map(t => t.type.name).join(" ")
     }
     return pok;
 

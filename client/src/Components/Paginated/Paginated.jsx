@@ -9,7 +9,7 @@ export default function Paginated ({currentPage, pokemons, pokemonsPerPage, pagi
     }
 
     return(
-        <div>
+        <nav>
             <ul className={style.ul}>
             {currentPage > 1 && (
                 <li className={style.li}>
@@ -33,7 +33,7 @@ export default function Paginated ({currentPage, pokemons, pokemonsPerPage, pagi
             )}
             </ul>
 
-        </div>
+        </nav>
        
 
     )

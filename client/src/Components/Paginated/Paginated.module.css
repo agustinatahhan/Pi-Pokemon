@@ -8,7 +8,7 @@
 
 }
 
-.ul{
+/* .ul{
     cursor: pointer;
     border: none;
     display: flex;
@@ -30,4 +30,24 @@
 .li a {
     display: block;
     width: 100%;
-  }
+  } */
+
+.ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px ;
+    
+}
+
+.ul .li{
+    position: relative;
+    padding: 0 25px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.li:hover{
+    color: var(--lavande);
+    
+}

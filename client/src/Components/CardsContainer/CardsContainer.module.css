@@ -1,14 +1,8 @@
-/* .nav{
-    position: fixed;
-    z-index: 3;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 1rem;
-    
-} */
+:root{
+    --manrope: 'Manrope', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
 
 .filtersContainer{
     width: 100%;
@@ -29,12 +23,9 @@
     padding: 0 50px 0 30px;
     text-align: center;
     transition: all .3s;
+    font-family: var(--manrope);
 }
 
-
-.filtersContainer{
-    margin-bottom: 30px;
-}
 
 .container{
     display: flex;
@@ -43,6 +34,5 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem
 }
 

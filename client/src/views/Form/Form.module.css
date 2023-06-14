@@ -3,6 +3,7 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
+    justify-content: flex-start;
     
 }
 
@@ -30,3 +31,21 @@
     margin-left: 10px;
     margin-right: 10px;;
   }
+
+
+/* .btn{
+    padding: 10px 25px;
+    background: #000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn:hover{
+    background-color: pink;
+} */

@@ -22,23 +22,35 @@ const Details = () => {
     const { name, speed, attack, defense, life, types, height, weight, image} = details;
 
     return(
-        <div>
-            <button onClick={(() => navigate("/home"))}>Back</button>
-            <div className={style.containerCard}>
-                <div>
-                    <h2>{name}</h2>
-                    <img src={image} alt={name}/>
-                    {speed && <h4>Speed: <span>{speed}</span></h4>}
-                    {height && <h4>Speed: <span>{height} cm</span></h4>}
-                    {weight && <h4>Speed: <span>{weight} kg</span></h4>}
-                    <h4>Attack: <span>{attack}</span></h4>
-                    <h4>Defense: <span>{defense}</span></h4>
-                    <h4>Life: <span>{life}%</span></h4>
-                    <h4>Type: {types}</h4>
-                </div>
-            </div>
+        <section className={style.container}>
             
-        </div>
+                <div className={style.item}>
+                    <div onClick={(() => navigate("/home"))} className={style.arrow}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-left" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#9e9e9e" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 12l14 0" />
+                        <path d="M5 12l4 4" />
+                        <path d="M5 12l4 -4" />
+                        </svg>
+                    </div>
+
+                    <img src={image} alt={name}/>
+                    <div className="header">
+                        <h2>{name}</h2>
+                        <h3>{types}</h3>   
+                    </div>
+
+                    <div className={style.content}>
+                        {speed && <h4>{speed}<span>Speed</span></h4>}
+                        {height && <h4>{height}cm<span>Height</span></h4>}
+                        {weight && <h4>{weight}<span>Weight</span></h4>}
+                        <h4>{attack}<span>Attack</span></h4>
+                        <h4>{defense}<span>Defense </span></h4>
+                        <h4>{life}<span>HP</span></h4>
+                    </div>
+
+                </div>
+        </section>
     )
 }
 
