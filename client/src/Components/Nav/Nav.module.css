@@ -28,10 +28,12 @@
     text-decoration: none;
     opacity: 0.7;
     color: #FFF;
-    font-size: 17px;
+    font-size: 15px;
     margin: 0 10px;
     transition: all .5s;
     font-family: var(--manrope);
+    letter-spacing: 2px;
+    padding: 0 1rem
 }
 
 .navlink:hover{

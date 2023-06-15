@@ -87,114 +87,125 @@ const Form = () => {
       };
 
     return(
-        <div>
-            <h2>Create your own Pokemon!</h2>
-            <form className={style.container} onSubmit={(event) => handleSubmit(event)}>
-                <div>
-                    <label>Name:</label>
-                    <input type="text" placeholder="Insert name" name="name" value={input.name} onChange={(event) => handleInputChange(event)}/>
-                    {errors.name && <p>{errors.name}</p>}
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Speed:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.speed}
-                    onChange={(value) => handleSliderChange('speed', value)}
-                    />
-                    <span>{input.speed} km/h</span>
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Weight:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.weight}
-                    onChange={(value) => handleSliderChange('weight', value)}
-                    />
-                    <span>{input.weight} kg</span>
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Height:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.height}
-                    onChange={(value) => handleSliderChange('height', value)}
-                    />
-                    <span>{input.height} cm</span>
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Attack:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.attack}
-                    onChange={(value) => handleSliderChange('attack', value)}
-                    />
-                    <span>{input.attack} %</span>
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Defense:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.defense}
-                    onChange={(value) => handleSliderChange('defense', value)}
-                    />
-                    <span>{input.defense} %</span>
-                </div>
-
-                <div className={style.sliderContainer}>
-                    <label>Health:</label>
-                    <Slider
-                    className={style.slider}
-                    min={0}
-                    max={100}
-                    value={input.life}
-                    onChange={(value) => handleSliderChange('life', value)}
-                    />
-                    <span>{input.life} %</span>
-                </div>
-
-                <div>
-                    <label>Image url:</label>
-                    <input type="text" placeholder="Insert url" name="image" value={input.image} onChange={(event) => handleInputChange(event)}/>
-                </div>
-                
-                <div>
-                    <label>Types:</label>
-                    <select onChange={(event) => handleSelect(event)}>
-                        {types.map((type) => (
-                            <option key={type.id} value={type.id}>
-                                {type.name}
-                            </option>
-                        ))}
-                    </select>
-                    <div>
-                    {input.types.map((types, index) => (
-                        <div key={index}>
-                        <p>{types}</p>
-                        <button onClick={(event) => removeType(event, index)}>x</button>
+        <div className={style.container}>
+            <form className={style.item} onSubmit={(event) => handleSubmit(event)}>
+                <h2>Create your own Pokémon!</h2>
+                <div className={style.grid}>
+                    <div className={style.content}>
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" placeholder="Insert name" name="name" value={input.name} onChange={(event) => handleInputChange(event)}/>
+                            {errors.name && <p>{errors.name}</p>}
                         </div>
-                    ))}
-                </div>
+                        <div>
+                            <label>Image url:</label>
+                            <input type="text" placeholder="Insert url" name="image" value={input.image} onChange={(event) => handleInputChange(event)}/>
+                        </div>
+                        <div className={style.typesContainer}>
+                            <div className={style.typeSelect}>
+                            <label>Types:</label>
+                                <select onChange={(event) => handleSelect(event)} >
+                                    {types.map((type) => (
+                                        <option key={type.id} value={type.id}>
+                                            {type.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                        <div>
+                            {input.types.map((types, index) => (
+                                <div key={index} className={style.inputDelete}>
+                                <button onClick={(event) => removeType(event, index)}>x</button>
+                                <p>{types}</p>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div className={style.sliderContainer}>
+                            <label>Speed:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.speed}
+                            onChange={(value) => handleSliderChange('speed', value)}
+                            />
+                            <span>{input.speed} km/h</span>
+                        </div>
+
+                        <div className={style.sliderContainer}>
+                            <label>Weight:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.weight}
+                            onChange={(value) => handleSliderChange('weight', value)}
+                            />
+                            <span>{input.weight} kg</span>
+                        </div>
+
+                        <div className={style.sliderContainer}>
+                            <label>Height:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.height}
+                            onChange={(value) => handleSliderChange('height', value)}
+                            />
+                            <span>{input.height} cm</span>
+                        </div>
+
+                        <div className={style.sliderContainer}>
+                            <label>Attack:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.attack}
+                            onChange={(value) => handleSliderChange('attack', value)}
+                            />
+                            <span>{input.attack} %</span>
+                        </div>
+
+                        <div className={style.sliderContainer}>
+                            <label>Defense:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.defense}
+                            onChange={(value) => handleSliderChange('defense', value)}
+                            />
+                            <span>{input.defense} %</span>
+                        </div>
+
+                        <div className={style.sliderContainer}>
+                            <label>Health:</label>
+                            <Slider
+                            className={style.slider}
+                            min={0}
+                            max={100}
+                            value={input.life}
+                            onChange={(value) => handleSliderChange('life', value)}
+                            />
+                            <span>{input.life} %</span>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div>
                     <button 
                     type="submit" 
+                    className={style.btn}
                     disabled={!input.name || !input.speed || !input.weight || !input.height || !input.life 
                     || !input.attack || !input.defense || !input.image || errors.name }
                     >Submit</button>

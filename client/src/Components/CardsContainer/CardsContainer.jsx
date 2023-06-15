@@ -47,6 +47,7 @@ const CardsContainer = () => {
     }
 
     const filterByTypes = (event) => {
+        event.preventDefault();
         dispatch(filterTypes(event.target.value));
         setOrden(event.target.value);
         setCurrentPage(1);
