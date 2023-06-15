@@ -16,7 +16,6 @@ const getAllPokemons = async (req, res) => {
 
 const getPokemonId = async (req, res) => {
     const { id } = req.params;
-    console.log(id)
     try {
         const response = isNaN(id) ? await getDbId(id) : await getApiId(id);
             console.log(response);
@@ -42,10 +41,26 @@ const createPokemon = async (req, res) => {
             image,
             types
         })
-       
+        
         await newPokemon.addTypes(types);
         return res.status(200).json("Pokemon creado");
+        
+    } catch (error) {
+        return res.status(400).json({error: error.message})
+    }
+}
 
+const deletePoke = async(req, res) => {
+    const { id } = req.params;
+    try {
+        await Pokemon.destroy({
+            where: {
+                id: id
+            }
+        })
+        const allPokes = await getAll();
+
+        return res.status(200).json(allPokes);
     } catch (error) {
         return res.status(400).json({error: error.message})
     }
@@ -55,4 +70,5 @@ module.exports = {
     getAllPokemons,
     getPokemonId,
     createPokemon,
+    deletePoke
 }

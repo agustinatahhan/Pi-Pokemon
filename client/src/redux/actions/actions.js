@@ -7,7 +7,8 @@ import {
     FILTER_NAME,
     FILTER_ATTACK,
     FILTER_CREATED,
-    FILTER_TYPES
+    FILTER_TYPES,
+    DELETE_POKEMON
 } from "../action-types/action-types";
 import axios from "axios";
 
@@ -81,5 +82,13 @@ export const filterTypes = (payload) => {
     return{
         type: FILTER_TYPES,
         payload
+    }
+}
+
+export const deletePokemon = (id) => {
+    return async function(dispatch){
+        const response = await axios.delete(`http://localhost:3001/pokemon/${id}`);
+        const data = response.data;
+        dispatch({type: DELETE_POKEMON, payload: data})
     }
 }

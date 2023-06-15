@@ -1,5 +1,10 @@
 const { Router } = require("express");
-const {getAllPokemons, getPokemonId, createPokemon} = require("../handlers/pokemonHandlers");
+const {
+    getAllPokemons,
+    getPokemonId, 
+    createPokemon, 
+    deletePoke
+} = require("../handlers/pokemonHandlers");
 
 
 
@@ -14,7 +19,9 @@ pokemonRouter.get("/:id", (req, res) => {
 pokemonRouter.post("/", (req, res) => {
     createPokemon(req, res)
 })
-
+pokemonRouter.delete("/:id", (req, res) => {
+    deletePoke(req, res)
+})
 
 
 

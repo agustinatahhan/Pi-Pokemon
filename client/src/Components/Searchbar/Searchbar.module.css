@@ -24,10 +24,11 @@
     color: #75706f;
     outline: none;
     padding: 0 50px 0 30px;
+    
 }
 
 .principal .inputSearch input::placeholder{
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: #ccc;
     font-family: var(--manrope);
 }

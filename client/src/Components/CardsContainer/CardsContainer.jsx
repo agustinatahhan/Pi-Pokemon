@@ -4,7 +4,8 @@ import Card from "../Card/Card";
 import Searchbar from "../Searchbar/Searchbar";
 import Paginated from "../../Components/Paginated/Paginated";
 import style from "./CardsContainer.module.css";
-import { filterName, filterByAttack, filterCreated, filterTypes } from "../../redux/actions/actions";
+import { filterName, filterByAttack, filterCreated, filterTypes, getAll } from "../../redux/actions/actions";
+
 
 const CardsContainer = () => {
 
@@ -28,14 +29,14 @@ const CardsContainer = () => {
     const filterNameAd = (event) => {
         event.preventDefault();
         dispatch(filterName(event.target.value));
-        setCurrentPage(1);
+        // setCurrentPage(1);
         setOrden(event.target.value)
     }
 
     const filterAttack = (event) => {
         event.preventDefault();
         dispatch(filterByAttack(event.target.value));
-        setCurrentPage(1);
+        // setCurrentPage(1);
         setOrden(event.target.value)
     }
 
@@ -43,16 +44,21 @@ const CardsContainer = () => {
         event.preventDefault();
         dispatch(filterCreated(event.target.value));
         setOrden(event.target.value)
-        setCurrentPage(1);
+        // setCurrentPage(1);
     }
 
     const filterByTypes = (event) => {
         event.preventDefault();
         dispatch(filterTypes(event.target.value));
         setOrden(event.target.value);
-        setCurrentPage(1);
+        // setCurrentPage(1);
 
     }
+
+    const resetInput = () => { 
+        const selects = document.querySelectorAll(".resetSelect");
+            selects.forEach((select) => (select.selectedIndex = 0)); 
+    }      
 
     return(
         <div>
@@ -90,6 +96,11 @@ const CardsContainer = () => {
                             ))}
                         </select>
                     </div>
+                    <button className={style.btn} onClick={() => {
+                         setCurrentPage(1)
+                         dispatch(getAll())
+                         resetInput()
+                    }}>Reset Filters</button>
                 </div>
             </div>                    
 

@@ -8,7 +8,8 @@ import {
     FILTER_NAME,
     FILTER_ATTACK,
     FILTER_CREATED,
-    FILTER_TYPES
+    FILTER_TYPES,
+    DELETE_POKEMON
     
 } from "../action-types/action-types";
 
@@ -108,6 +109,13 @@ const reducer = (state = initialState, {type, payload}) => {
                   ...state,
                   pokemons: filteredTypes,
                 };
+            
+            case DELETE_POKEMON: return{
+                ...state,
+                pokemons: payload,
+                filteredPokemons: payload,
+
+            }
 
             default: return{
                 ...state

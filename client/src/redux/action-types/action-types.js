@@ -8,3 +8,4 @@ export const FILTER_ATTACK = "FILTER_ATTACK";
 export const FILTER_CREATED = "FILTER_CREATED";
 export const FILTER_TYPES = "FILTER_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
+export const DELETE_POKEMON = "DELETE_POKEMON";

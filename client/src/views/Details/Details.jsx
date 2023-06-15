@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getDetails, cleanDetails } from "../../redux/actions/actions";
+import { getDetails, cleanDetails, deletePokemon } from "../../redux/actions/actions";
 import style from "./Details.module.css";
 
 const Details = () => {
@@ -14,12 +14,29 @@ const Details = () => {
 
     const navigate = useNavigate();
 
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    const handleDelete = () => {
+        if (showConfirmation) {
+          dispatch(deletePokemon(id));
+          setShowConfirmation(false);
+          navigate("/home")
+        } else {
+          setShowConfirmation(true);
+        }
+      };
+
     useEffect(() => {
         dispatch(getDetails(id));
         return () => dispatch(cleanDetails())
     }, [id])
 
     const { name, speed, attack, defense, life, types, height, weight, image} = details;
+
+    // const handleDelete = () => {
+    //     dispatch(deletePokemon(id))
+    //     navigate("/home")
+    // }
 
     return(
         <section className={style.container}>
@@ -48,7 +65,22 @@ const Details = () => {
                         <h4>{defense}<span>Defense </span></h4>
                         <h4>{life}<span>HP</span></h4>
                     </div>
-
+                    {/* <div className={style.btnContainer}>
+                        {isNaN(id) ? (
+                            <button onClick={handleDelete} className={style.btnDelete}>
+                                Delete
+                            </button>
+                        ) : null
+                        }
+                    </div> */}
+                    <div className={style.btnContainer}>
+                        {isNaN(id) ? (
+                            <button onClick={handleDelete} className={style.btnDelete}>
+                            {showConfirmation ? 'Confirm Delete' : 'Delete'}
+                            </button>
+                        ) : null}
+                    </div>
+                    
                 </div>
         </section>
     )

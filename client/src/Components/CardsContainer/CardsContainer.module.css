@@ -20,12 +20,12 @@
     border: 1px solid #c4c4c4;
     color: #75706f;
     outline: none;
-    padding: 0 50px 0 30px;
+    padding: 0 30px 0 30px;
     text-align: center;
     transition: all .3s;
     font-family: var(--manrope);
+    letter-spacing: 1px;
 }
-
 
 .container{
     display: flex;
@@ -36,3 +36,22 @@
     align-items: center;
 }
 
+.btn{
+    cursor: pointer;
+    height: 35px;
+    border-radius: 50px;
+    border: 1px solid #c4c4c4;
+    color: #75706f;
+    outline: none;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    transition: all .3s;
+    font-family: var(--manrope);
+    background: transparent;
+    letter-spacing: 1px;
+    
+}
+
+.btn:hover{
+    background: url(../../Img/fondo1.JPG)
+}
