@@ -155,9 +155,31 @@ const getApiId = async (id) => {
 
 }
 
+const pokemonUpdate = async (id, name, image, speed, height, weight, attack, defense, life, types) => {
+
+  const pokemon = await Pokemon.findOne(id);
+
+    pokemon.name = name || pokemon.name;
+    pokemon.image = image || pokemon.image;
+    pokemon.speed = speed || pokemon.speed;
+    pokemon.height = height || pokemon.height;
+    pokemon.weight = weight || pokemon.weight;
+    pokemon.attack = attack || pokemon.attack;
+    pokemon.defense = defense || pokemon.defense;
+    pokemon.life = life || pokemon.life;
+    pokemon.types = types || pokemon.types
+
+  await pokemon.setTypes(types);
+
+  await pokemon.save();
+
+  return pokemon;
+}
+
 module.exports = {
     getAll,
     getName,
     getDbId,
-    getApiId
+    getApiId,
+    pokemonUpdate
 }

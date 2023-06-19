@@ -3,7 +3,8 @@ const {
     getAllPokemons,
     getPokemonId, 
     createPokemon, 
-    deletePoke
+    deletePoke,
+    modifyPokemon
 } = require("../handlers/pokemonHandlers");
 
 
@@ -21,6 +22,9 @@ pokemonRouter.post("/", (req, res) => {
 })
 pokemonRouter.delete("/:id", (req, res) => {
     deletePoke(req, res)
+})
+pokemonRouter.put("/:id", (req, res) => {
+    modifyPokemon(req, res)
 })
 
 

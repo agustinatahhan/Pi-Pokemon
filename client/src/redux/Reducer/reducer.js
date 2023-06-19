@@ -9,7 +9,9 @@ import {
     FILTER_ATTACK,
     FILTER_CREATED,
     FILTER_TYPES,
-    DELETE_POKEMON
+    DELETE_POKEMON,
+    POKEMON_ERROR,
+    MODIFY_POKEMON
     
 } from "../action-types/action-types";
 
@@ -19,6 +21,7 @@ let initialState = {
     pokemonDetails: {},
     allTypes: [],
     filteredPokemons: [],
+    errorsMessage: ""
 
 }
 
@@ -116,6 +119,19 @@ const reducer = (state = initialState, {type, payload}) => {
                 filteredPokemons: payload,
 
             }
+
+            case MODIFY_POKEMON: return{
+                ...state,
+                pokemons: payload,
+                filteredPokemons: payload,
+
+            }
+
+            // case POKEMON_ERROR:
+            //     return {
+            //       ...state,
+            //       errorMessage: payload
+            //     };
 
             default: return{
                 ...state

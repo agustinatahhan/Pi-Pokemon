@@ -18,7 +18,8 @@
     height: 35px;
     border-radius: 50px;
     border: 1px solid #c4c4c4;
-    color: #75706f;
+    /* color: #75706f; */
+    color: #303030;
     outline: none;
     padding: 0 30px 0 30px;
     text-align: center;
@@ -41,7 +42,7 @@
     height: 35px;
     border-radius: 50px;
     border: 1px solid #c4c4c4;
-    color: #75706f;
+    color: #303030;
     outline: none;
     padding: 0 20px 0 20px;
     text-align: center;

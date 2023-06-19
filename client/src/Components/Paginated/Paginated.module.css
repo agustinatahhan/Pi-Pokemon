@@ -1,10 +1,5 @@
 :root{
-    --nude: #DBCFC3;
-    --acqua:#D3E3D6;
-    --rose: #EFC4B9;
-    --peach: #FDBC96;
-    --lavande: #DAC2CF;
-    --rosenude: #E0C9BC; 
+    --lila: #a886dd;
 
 }
 
@@ -37,17 +32,25 @@
     justify-content: center;
     align-items: center;
     padding: 30px ;
+    gap: 2rem;
     
 }
 
 .ul .li{
     position: relative;
-    padding: 0 25px;
     list-style-type: none;
     cursor: pointer;
+    font-size: 18px;
+    
 }
 
 .li:hover{
-    color: var(--lavande);
+    color: var(--lila);
     
+}
+
+.colorNumber{
+    color: var(--lila);
+    font-weight: bold;
+    font-size: 20px;
 }

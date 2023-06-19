@@ -1,5 +1,5 @@
 const axios = require("axios");
-const {getAll, getName, getDbId, getApiId} = require("../controllers/pokemonControllers");
+const {getAll, getName, getDbId, getApiId, pokemonUpdate} = require("../controllers/pokemonControllers");
 const { Pokemon } = require("../db");
 
 const getAllPokemons = async (req, res) => {
@@ -66,9 +66,24 @@ const deletePoke = async(req, res) => {
     }
 }
 
-module.exports = {
+const modifyPokemon = async (req, res) => {
+
+    const {id, name, image, speed, height, weight, attack, defense, life, types} = req.body;
+    try {
+        console.log(types + "handler")
+        const modify = await pokemonUpdate(id, name, image, speed, height, weight, attack, defense, life, types);
+        if (modify.error) throw Error(modify.error);
+        return res.status(200).json("Pokemon updated");
+
+    } catch (error) {
+        return res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = { 
     getAllPokemons,
     getPokemonId,
     createPokemon,
-    deletePoke
+    deletePoke,
+    modifyPokemon
 }

@@ -8,7 +8,9 @@ import {
     FILTER_ATTACK,
     FILTER_CREATED,
     FILTER_TYPES,
-    DELETE_POKEMON
+    DELETE_POKEMON,
+    POKEMON_ERROR,
+    MODIFY_POKEMON
 } from "../action-types/action-types";
 import axios from "axios";
 
@@ -90,5 +92,13 @@ export const deletePokemon = (id) => {
         const response = await axios.delete(`http://localhost:3001/pokemon/${id}`);
         const data = response.data;
         dispatch({type: DELETE_POKEMON, payload: data})
+    }
+}
+
+export const modifyPokemon = (id) => {
+    return async function(dispatch){
+        const response = await axios.put(`http://localhost:3001/pokemon/${id}`);
+        const data = response.data;
+        dispatch({type: MODIFY_POKEMON, payload: data})
     }
 }

@@ -1,23 +1,35 @@
 import { getName } from "../../redux/actions/actions";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import fondo from "../../Img/fondo1.JPG";
 import style from "./Searchbar.module.css";
 
-const Searchbar = () => {
+const Searchbar = ({setCurrentPage}) => {
 
     const dispatch = useDispatch();
 
     const [name, setName] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (event) => {
         event.preventDefault();
         setName(event.target.value)
+
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(getName(name))
-    }
+
+        setLoading(true);
+        setTimeout(() => {
+        dispatch(getName(name)).then(() => {
+            setLoading(false);
+        });
+
+        setName("");
+    }, 1000);
+    setCurrentPage(1)
+}
 
     return(
         <div className={style.principal}>
@@ -32,7 +44,19 @@ const Searchbar = () => {
                 </div>
 
             </div>
-            
+            {loading && (
+                <div>
+                    <span
+                        className={style.loader}
+                        style={{  
+                            backgroundImage: `url(${fondo})`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                            width: '100%',
+                            height: '100%',}}
+                    ></span>
+                </div>
+            )}
         </div>
     )
 }

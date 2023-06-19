@@ -78,7 +78,7 @@
 }
 
 .text h3{
-    color: #FFF;
+    color: #000;
     /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);     */
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);    
     text-transform: uppercase;
@@ -107,7 +107,7 @@
 }
 
 .types h4{
-    color: var(--lila);
+    color: #000;
     font-size: 16px;
     opacity: 0;
     transform: translateY(40px);

@@ -1,3 +1,4 @@
+import CardsContainer from "../CardsContainer/CardsContainer";
 import style from "./Paginated.module.css";
 
 export default function Paginated ({currentPage, pokemons, pokemonsPerPage, paginado}){
@@ -7,35 +8,63 @@ export default function Paginated ({currentPage, pokemons, pokemonsPerPage, pagi
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
-
-    return(
+    return (
         <nav>
-            <ul className={style.ul}>
+          <ul className={style.ul}>
             {currentPage > 1 && (
-                <li className={style.li}>
+              <li className={style.li}>
                 <a onClick={() => paginado(currentPage - 1)}>←</a>
-                </li>
+              </li>
             )}
             {pageNumbers.map((number) => (
-                <li key={number} className={style.li}>
+              <li key={number} className={style.li}>
                 <a
-                    onClick={() => paginado(number)}
-                    className={number === currentPage ? style.active : ""}
+                  onClick={() => paginado(number)}
+                  className={`${style.pageNumber} ${number === currentPage ? style[`colorNumber`] : ""}`}
                 >
-                    {number}
+                  {number}
                 </a>
-                </li>
+              </li>
             ))}
             {currentPage < totalPages && (
-                <li className={style.li}>
+              <li className={style.li}>
                 <a onClick={() => paginado(currentPage + 1)}>→</a>
-                </li>
+              </li>
             )}
-            </ul>
-
+          </ul>
+         
         </nav>
+        
+      );
+}
+    // return(
+    //     <nav>
+    //         <ul className={style.ul}>
+    //         {currentPage > 1 && (
+    //             <li className={style.li}>
+    //             <a onClick={() => paginado(currentPage - 1)}>←</a>
+    //             </li>
+    //         )}
+    //         {pageNumbers.map((number) => (
+    //             <li key={number} className={style.li}>
+    //             <a
+    //                 onClick={() => paginado(number)}
+    //                 className={number === currentPage ? style.active : ""}
+    //             >
+    //                 {number}
+    //             </a>
+    //             </li>
+    //         ))}
+    //         {currentPage < totalPages && (
+    //             <li className={style.li}>
+    //             <a onClick={() => paginado(currentPage + 1)}>→</a>
+    //             </li>
+    //         )}
+    //         </ul>
+
+    //     </nav>
        
 
-    )
+    // )
 
-}
+

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDetails, cleanDetails, deletePokemon } from "../../redux/actions/actions";
+import fondo from "../../Img/fondo1.JPG";
 import style from "./Details.module.css";
 
 const Details = () => {
@@ -13,8 +14,9 @@ const Details = () => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
-
+    
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleDelete = () => {
         if (showConfirmation) {
@@ -25,24 +27,44 @@ const Details = () => {
           setShowConfirmation(true);
         }
       };
-
+    
+    // useEffect(() => {
+    //     dispatch(getDetails(id));
+    //     return () => dispatch(cleanDetails())
+    // }, [id])
     useEffect(() => {
-        dispatch(getDetails(id));
+        const timer = setTimeout(() => {
+            dispatch(getDetails(id)).then(() => {
+            setIsLoading(false);
+          });
+        }, 100);
+    
         return () => dispatch(cleanDetails())
-    }, [id])
+      }, [id]);
 
     const { name, speed, attack, defense, life, types, height, weight, image} = details;
-
-    // const handleDelete = () => {
-    //     dispatch(deletePokemon(id))
-    //     navigate("/home")
-    // }
+    
+    if (isLoading) {
+        return (
+          <div>
+            <span
+              className={style.loader}
+              style={{  
+                backgroundImage: `url(${fondo})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                width: '100%',
+                height: '100%',}}
+            ></span>
+          </div>
+        );
+    }
 
     return(
         <section className={style.container}>
             
                 <div className={style.item}>
-                    <div onClick={(() => navigate("/home"))} className={style.arrow}>
+                    <div onClick={() => navigate("/home")} className={style.arrow}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-left" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#9e9e9e" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M5 12l14 0" />
@@ -65,17 +87,15 @@ const Details = () => {
                         <h4>{defense}<span>Defense </span></h4>
                         <h4>{life}<span>HP</span></h4>
                     </div>
-                    {/* <div className={style.btnContainer}>
-                        {isNaN(id) ? (
-                            <button onClick={handleDelete} className={style.btnDelete}>
-                                Delete
-                            </button>
-                        ) : null
-                        }
-                    </div> */}
+                    
                     <div className={style.btnContainer}>
                         {isNaN(id) ? (
-                            <button onClick={handleDelete} className={style.btnDelete}>
+                            <button onClick={() => navigate("/modify")} className={style.btnDelete}>
+                                Modify
+                            </button>
+                        ) : null}
+                        {isNaN(id) ? (
+                           <button onClick={handleDelete} className={style.btnDelete}>
                             {showConfirmation ? 'Confirm Delete' : 'Delete'}
                             </button>
                         ) : null}
