@@ -155,6 +155,7 @@ const getApiId = async (id) => {
 
 }
 
+
 const pokemonUpdate = async (id, name, image, speed, height, weight, attack, defense, life, types) => {
 
   const pokemon = await Pokemon.findOne(id);
@@ -181,5 +182,6 @@ module.exports = {
     getName,
     getDbId,
     getApiId,
+    
     pokemonUpdate
 }

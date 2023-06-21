@@ -7,6 +7,8 @@ const Nav = () => {
         <div  id="home" className={style.navContainer}>
             <NavLink to="/home" className={style.navlink}>Home</NavLink>
             <NavLink to="/create" className={style.navlink}>Create a new Pokemon</NavLink>
+            {/* <NavLink to="/modify" className={style.navlink}>Update your Pokemon</NavLink> */}
+
         </div>
     )
 }

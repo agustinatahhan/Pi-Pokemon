@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDetails, cleanDetails, deletePokemon } from "../../redux/actions/actions";
+// import Modify from "../Modify/Modify";
 import fondo from "../../Img/fondo1.JPG";
 import style from "./Details.module.css";
 
@@ -81,7 +82,7 @@ const Details = () => {
 
                     <div className={style.content}>
                         {speed && <h4>{speed}<span>Speed</span></h4>}
-                        {height && <h4>{height}cm<span>Height</span></h4>}
+                        {height && <h4>{height}<span>Height</span></h4>}
                         {weight && <h4>{weight}<span>Weight</span></h4>}
                         <h4>{attack}<span>Attack</span></h4>
                         <h4>{defense}<span>Defense </span></h4>
@@ -90,7 +91,7 @@ const Details = () => {
                     
                     <div className={style.btnContainer}>
                         {isNaN(id) ? (
-                            <button onClick={() => navigate("/modify")} className={style.btnDelete}>
+                            <button onClick={() => navigate("/modify",  { name, speed, attack, defense, life, types, height, weight, image })} className={style.btnDelete}>
                                 Modify
                             </button>
                         ) : null}

@@ -13,6 +13,7 @@ const Home = () => {
     
     useEffect(() => {
         dispatch(getTypes())
+       
     }, []);
     
     useEffect(() => {
@@ -23,9 +24,9 @@ const Home = () => {
         }, 800);
     
         return () => clearTimeout(timer);
+
       }, [dispatch]);
     
-    // dispatch(getAll())
     if (isLoading) {
         return (
           <div>

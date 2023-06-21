@@ -24,9 +24,16 @@ export const getAll = () => {
 
 export const getName = (name) => {
     return async function(dispatch){
-        const response = await axios.get(`http://localhost:3001/pokemon?name=${name}`);
-        const data = response.data;
-        dispatch({type: GET_NAME, payload: data})
+        try {
+            const response = await axios.get(`http://localhost:3001/pokemon?name=${name}`);
+            const data = response.data;
+            console.log(data);
+            if(data.length === 0) throw Error("Pokémon not found")
+            dispatch({type: GET_NAME, payload: data})
+            
+        } catch (error) {
+            alert("Pokémon not found, try again.")
+        }
     }
 }
 

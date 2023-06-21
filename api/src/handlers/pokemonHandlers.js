@@ -1,5 +1,5 @@
 const axios = require("axios");
-const {getAll, getName, getDbId, getApiId, pokemonUpdate} = require("../controllers/pokemonControllers");
+const {getAll, getName, getDbId, getApiId, pokemonUpdate } = require("../controllers/pokemonControllers");
 const { Pokemon } = require("../db");
 
 const getAllPokemons = async (req, res) => {
@@ -15,10 +15,10 @@ const getAllPokemons = async (req, res) => {
 }
 
 const getPokemonId = async (req, res) => {
-    const { id } = req.params;
+  ;  const { id } = req.params
     try {
         const response = isNaN(id) ? await getDbId(id) : await getApiId(id);
-            console.log(response);
+            
         return res.status(200).json(response);
         
     } catch (error) {
@@ -26,29 +26,65 @@ const getPokemonId = async (req, res) => {
     }
 }
 
+// const createPokemon = async (req, res) => {
+//     const {id, name, life, speed, attack, defense, types, weight, height, image} = req.body;
+//     try {
+//         const pokem = await findOrCreate({where: {name}}, )
+//     } catch (error) {
+        
+//     }
+    // try {
+    //     const newPokemon = await Pokemon.create({
+    //         id,
+    //         name,
+    //         life,
+    //         speed,
+    //         attack,
+    //         defense,
+    //         weight,
+    //         height,
+    //         image,
+    //         types
+    //     })
+        
+    //     await newPokemon.addTypes(types);
+
+    //     return res.status(200).json("Pokemon creado");
+        
+    // } catch (error) {
+    //     return res.status(400).json({error: error.message})
+    // }
+// }
 const createPokemon = async (req, res) => {
-    const {id, name, life, speed, attack, defense, types, weight, height, image} = req.body;
+    const { id, name, life, speed, attack, defense, types, weight, height, image } = req.body;
     try {
-        const newPokemon = await Pokemon.create({
-            id,
-            name,
-            life,
-            speed,
-            attack,
-            defense,
-            weight,
-            height,
-            image,
-            types
-        })
-        
-        await newPokemon.addTypes(types);
-        return res.status(200).json("Pokemon creado");
-        
+      const [pokemon, created] = await Pokemon.findOrCreate({
+        where: { name },
+        defaults: {
+          id,
+          life,
+          speed,
+          attack,
+          defense,
+          types,
+          weight,
+          height,
+          image,
+        },
+      });
+  
+      if (!created) {
+        return res.status(409).json({ error: 'El nombre del Pokémon ya existe' });
+      }
+    
+      await pokemon.addTypes(types);
+
+      return res.status(200).json(pokemon);
+
     } catch (error) {
-        return res.status(400).json({error: error.message})
+      return res.status(400).json({ error: 'Error interno del servidor' });
     }
-}
+  };
 
 const deletePoke = async(req, res) => {
     const { id } = req.params;
@@ -70,9 +106,10 @@ const modifyPokemon = async (req, res) => {
 
     const {id, name, image, speed, height, weight, attack, defense, life, types} = req.body;
     try {
-        console.log(types + "handler")
         const modify = await pokemonUpdate(id, name, image, speed, height, weight, attack, defense, life, types);
+
         if (modify.error) throw Error(modify.error);
+        
         return res.status(200).json("Pokemon updated");
 
     } catch (error) {

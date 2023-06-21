@@ -10,7 +10,7 @@ const validation = (input) => {
     if(!input.image) errors.image = "You need to add an image";
     // if (!/^\d+$/.test(input.speed)) errors.speed = "Speed must contain only numbers";
     if (input.speed <= 0 || input.speed > 100) errors.speed = "Speed must be greater than 0 and less than or equal to 100";
-    // if(!input.speed) errors.speed = "You need to add some speed";
+    if(!input.speed) errors.speed = "You need to add some speed";
     
     // if(!input.attack) errors.attack = "You need to add some attack";
     // if (!/^\d+$/.test(input.attack)) errors.attack = "Attack must contain only numbers";
@@ -32,7 +32,8 @@ const validation = (input) => {
     // if (!/^\d+$/.test(input.weight)) errors.weight = "Weight must contain only numbers";
     if (input.weight <= 0 || input.weight > 100) errors.weight = "Weight must be greater than 0 and less than or equal to 100";
     
-    if(input.types === undefined) errors.types = "You have to choose at least one type"
+    if(input.types.length === 0) errors.types = "Add at least one type"
+   
     return errors;
 }
 
