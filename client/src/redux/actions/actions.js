@@ -27,7 +27,6 @@ export const getName = (name) => {
         try {
             const response = await axios.get(`http://localhost:3001/pokemon?name=${name}`);
             const data = response.data;
-            console.log(data);
             if(data.length === 0) throw Error("Pokémon not found")
             dispatch({type: GET_NAME, payload: data})
             
@@ -102,10 +101,12 @@ export const deletePokemon = (id) => {
     }
 }
 
-export const modifyPokemon = (id) => {
-    return async function(dispatch){
-        const response = await axios.put(`http://localhost:3001/pokemon/${id}`);
-        const data = response.data;
-        dispatch({type: MODIFY_POKEMON, payload: data})
-    }
-}
+// export const getModifyPokemons = (formModify) => {
+
+//     return async function(dispatch){
+//         const response = await axios.put("http://localhost:3001/pokemon", formModify);
+//         const data = response.data;
+//         dispatch({type: MODIFY_POKEMON, payload: data})
+//     }
+// }
+

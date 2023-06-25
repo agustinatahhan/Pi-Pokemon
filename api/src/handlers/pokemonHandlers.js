@@ -102,25 +102,40 @@ const deletePoke = async(req, res) => {
     }
 }
 
-const modifyPokemon = async (req, res) => {
+// const modifyPokemon = async (req, res) => {
 
-    const {id, name, image, speed, height, weight, attack, defense, life, types} = req.body;
-    try {
-        const modify = await pokemonUpdate(id, name, image, speed, height, weight, attack, defense, life, types);
+//     const {id, name, image, speed, height, weight, attack, defense, life, types} = req.body;
+//     try {
+//         const modify = await pokemonUpdate(id, name, image, speed, height, weight, attack, defense, life, types);
 
-        if (modify.error) throw Error(modify.error);
+//         if (modify.error) throw Error(modify.error);
         
-        return res.status(200).json("Pokemon updated");
+//         return res.status(200).json("Pokemon updated");
 
+//     } catch (error) {
+//         return res.status(400).json({error: error.message})
+//     }
+// }
+const UpdatePokemonHandler = async (req, res) => {
+   const {id, name, image, speed, height, weight, attack, defense, life, types} = req.body;
+    try {
+     
+      const modify = await pokemonUpdate(id, name, image, speed, height, weight, attack, defense, life, types);
+      
+      if (modify.error) throw Error(modify.error);
+        
+      return res.status(200).json("Pokemon updated");
     } catch (error) {
-        return res.status(400).json({error: error.message})
+      res
+        .status(400)
+        .json({ error: "Error updating pokemon", message: error.message });
     }
-}
+  };
 
 module.exports = { 
     getAllPokemons,
     getPokemonId,
     createPokemon,
     deletePoke,
-    modifyPokemon
+    UpdatePokemonHandler
 }

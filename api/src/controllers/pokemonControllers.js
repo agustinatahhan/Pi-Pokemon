@@ -59,21 +59,8 @@ const getAllApi = async () => {
 }
 
 const getName = async (name) => {
-    // const dbName = await Pokemon.findAll({ where: {name} });
-    
-    // const getPokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    // const {forms, sprites, types} = getPokemons.data;
-    // const pok = [{
-    //     name: forms[0].name,
-    //     image: sprites.other.dream_world.front_default,
-    //     types: types.map(t => t.type.name)
-    // }]
-        
-    
-    // const all = dbName.concat(pok);
-    // return all
-    const dataBasePokemons = await Pokemon.findAll({
-        where: {
+  const dataBasePokemons = await Pokemon.findAll({
+    where: {
           name
         },
         include: Type
@@ -97,15 +84,29 @@ const getName = async (name) => {
         };
       });
       
+      
+      const apiPokemon = await getAllApi();
+      
+      const filterPokemon = await apiPokemon.filter((element) =>
+      element.name.toLowerCase().includes(name.toLowerCase())
+      );
+      
+      return [...db, ...filterPokemon];
+    }
+      // const dbName = await Pokemon.findAll({ where: {name} });
+      
+      // const getPokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      // const {forms, sprites, types} = getPokemons.data;
+      // const pok = [{
+      //     name: forms[0].name,
+      //     image: sprites.other.dream_world.front_default,
+      //     types: types.map(t => t.type.name)
+      // }]
+          
+      
+      // const all = dbName.concat(pok);
+      // return all
 
-    const apiPokemon = await getAllApi();
-
-    const filterPokemon = await apiPokemon.filter((element) =>
-        element.name.toLowerCase().includes(name.toLowerCase())
-    );
-
-    return [...db, ...filterPokemon];
-}
 
 
 // const allNames = dbName.concat(pok);
@@ -159,8 +160,7 @@ const getApiId = async (id) => {
 const pokemonUpdate = async (id, name, image, speed, height, weight, attack, defense, life, types) => {
 
   const pokemon = await Pokemon.findOne(id);
-
-    pokemon.name = name || pokemon.name;
+    // pokemon.name = name || pokemon.name;
     pokemon.image = image || pokemon.image;
     pokemon.speed = speed || pokemon.speed;
     pokemon.height = height || pokemon.height;
@@ -182,6 +182,5 @@ module.exports = {
     getName,
     getDbId,
     getApiId,
-    
     pokemonUpdate
 }

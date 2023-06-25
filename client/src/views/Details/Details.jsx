@@ -28,11 +28,7 @@ const Details = () => {
           setShowConfirmation(true);
         }
       };
-    
-    // useEffect(() => {
-    //     dispatch(getDetails(id));
-    //     return () => dispatch(cleanDetails())
-    // }, [id])
+  
     useEffect(() => {
         const timer = setTimeout(() => {
             dispatch(getDetails(id)).then(() => {
@@ -90,11 +86,11 @@ const Details = () => {
                     </div>
                     
                     <div className={style.btnContainer}>
-                        {isNaN(id) ? (
-                            <button onClick={() => navigate("/modify",  { name, speed, attack, defense, life, types, height, weight, image })} className={style.btnDelete}>
+                        {/* {isNaN(id) ? (
+                            <button onClick={() => navigate("/modify", { ...details })} className={style.btnDelete}>
                                 Modify
                             </button>
-                        ) : null}
+                        ) : null} */}
                         {isNaN(id) ? (
                            <button onClick={handleDelete} className={style.btnDelete}>
                             {showConfirmation ? 'Confirm Delete' : 'Delete'}
@@ -103,6 +99,7 @@ const Details = () => {
                     </div>
                     
                 </div>
+              
         </section>
     )
 }

@@ -24,7 +24,8 @@ const Form = () => {
         speed: "",
         height: "",
         weight: "",
-        types: []
+        types: [],
+        tender: ""
     })
 
     const [errors, setErrors] = useState({
@@ -36,11 +37,11 @@ const Form = () => {
         speed: "",
         height: "",
         weight: "",
-        types: []
+        types: [],
+        tender: ""
         
     })
 
-    
     const name = (type)=>{
         return  types.map(objeto => objeto.id == type && objeto.name);       
     }
@@ -63,7 +64,6 @@ const Form = () => {
     }
 
     const handleSelect = (event) => {
-        console.log(event.target.name);
         setInput({
             ...input,
             types: [...input.types, event.target.value]
@@ -89,7 +89,8 @@ const Form = () => {
               image: '',
               height: 0,
               weight: 0,
-              types: []
+              types: [],
+              tender: ""
             });
             navigate('/home');
           })
@@ -100,22 +101,6 @@ const Form = () => {
               alert(error.message);
             }
           });
-        // event.preventDefault();
-
-        // dispatch(postPokemon(input));
-        // alert("Created");
-        // setInput({
-        //     name: "",
-        //     life: 0,
-        //     attack: 0,
-        //     defense: 0,
-        //     speed: 0,
-        //     image: "",
-        //     height: 0,
-        //     weight: 0,
-        //     types: []
-        // })
-        // navigate("/home");
         
     }
     
@@ -205,6 +190,14 @@ const Form = () => {
                                         {errors.speed && <p>{errors.speed}</p>}
                                     </div>
 
+                                    <div className={style.inputNumber}>
+                                    <label>Ternura:</label>
+                                        <input type="range" min={1} max={100} name="tender" value={input.tender}
+                                        onChange={(event) => handleInputChange(event)} 
+                                        className={style.bar}/>
+                                        <span>{input.tender}</span>
+                                        {errors.tender && <p>{errors.tender}</p>}
+                                    </div>
                                 </div>
 
                                 <div className={style.inputText}>
@@ -242,13 +235,6 @@ const Form = () => {
                         || !input.height || !input.attack || !input.defense || !input.image || !input.life || !input.types.length}
                         >Submit</button>
                     </div>
-                    {/* <div>
-                    {   //verifico si hay algun error en el obj errors:
-                        input.name && !Object.values(errors).some((error) => error !== "")
-                            ? <button className={style.btn}>Submit</button>
-                            : null
-                    }
-                    </div> */}
             </form>
             
         </div>

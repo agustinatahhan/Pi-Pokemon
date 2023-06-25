@@ -33,6 +33,9 @@ const validation = (input) => {
     if (input.weight <= 0 || input.weight > 100) errors.weight = "Weight must be greater than 0 and less than or equal to 100";
     
     if(input.types.length === 0) errors.types = "Add at least one type"
+    
+    if(input.tender === 0) errors.tender = "Debe ser mayor a cero"
+    if(input.tender < 10) errors.tender =" Debe ser menor a 10"
    
     return errors;
 }
