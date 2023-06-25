@@ -1,199 +1,197 @@
-:root{
-    --lila: #a886dd;
-    --lavande: #DAC2CF;
+:root {
+  --lila: #a886dd;
+  --lavande: #dac2cf;
 
-    --manrope: 'Manrope', sans-serif;
+  --manrope: "Manrope", sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope&display=swap");
 
-*{
-    font-family: var(--manrope);
-    letter-spacing: 2px;
+* {
+  font-family: var(--manrope);
+  letter-spacing: 2px;
 }
 
-.container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.form{
-    position: relative;
-    margin: 20px;
-    margin-top: 1rem;
-    background: #FFF;
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    padding: 50px 40px;
-    text-align: center;
-    width: 45rem;
-    height: 30rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+.form {
+  position: relative;
+  margin: 20px;
+  margin-top: 1rem;
+  background: #fff;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  width: 45rem;
+  height: 30rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.form h2{
-    margin-bottom: 2rem;
-    letter-spacing: 4px;
-
+.form h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 4px;
 }
 
-.grid{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: center;
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.text{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
+.text {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
-input, select{
-    border-radius: 50px;
-    border: 1px solid #c4c4c4;
-    outline: none;
-    text-align: center;
-    cursor: pointer;
+input,
+select {
+  border-radius: 50px;
+  border: 1px solid #c4c4c4;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
 }
 
-.inputText input{
-    width: 10rem;
-    margin: .5rem;
+.inputText input {
+  width: 10rem;
+  margin: 0.5rem;
 }
 
-.inputNumber input{
-    width: 10rem;
-    margin: .5rem;
+.inputNumber input {
+  width: 10rem;
+  margin: 0.5rem;
 }
 
-.inputText select{
-    width: 10rem;
-    text-align: center;
-    margin: .5rem;
+.inputText select {
+  width: 10rem;
+  text-align: center;
+  margin: 0.5rem;
 }
 
-.inputText::placeholder{
-    color: #c4c4c4;
-    text-align: center;
-    font-size: 8px;
+.inputText::placeholder {
+  color: #c4c4c4;
+  text-align: center;
+  font-size: 8px;
 }
 
-.inputDelete{
-    display: flex;
-    flex-direction: row;
-    gap: .5rem
+.inputDelete {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
-.inputDel{
-    display: flex;
-    gap: .5rem;
-    align-items: center;
-    justify-content: center;
+.inputDel {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.inputDel button{
-    width: 1.3rem;
-    border: none;
-    background: transparent;
-    border: 1px solid black;
-    border-radius: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+.inputDel button {
+  width: 1.3rem;
+  border: none;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
 }
 
-.inputDel h5{
-    font-weight: 400;
-    color: #a886dd;
+.inputDel h5 {
+  font-weight: 400;
+  color: #a886dd;
 }
 
-.btn{
-    width: 5rem;
-    height: 2rem;
-    background-color: var(--lila);
-    opacity: .7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    transition: all .5s;
-    cursor: pointer;
-    color: #FFF;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 4px;
-    border: none;
-    font-family: var(--manrope);
-    font-size: 10px;
-    margin-top: 1rem;
+.btn {
+  width: 5rem;
+  height: 2rem;
+  background-color: var(--lila);
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 4px;
+  border: none;
+  font-family: var(--manrope);
+  font-size: 10px;
+  margin-top: 1rem;
 }
 
-.inputNumber p{
-    color: red;
-    font-size: 7px;
+.inputNumber p {
+  color: red;
+  font-size: 7px;
 }
 
-.inputNumber span{
-    font-size: 13px;
+.inputNumber span {
+  font-size: 13px;
 }
 
-.inputText p{
-    color: red;
-    font-size: 7px;
+.inputText p {
+  color: red;
+  font-size: 7px;
 }
 
-.btn:hover{
-    opacity: 1;
+.btn:hover {
+  opacity: 1;
 }
 
-
-.barsContainer{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.5rem
-  
+.barsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.bar{
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 30px;
-    position: relative;
-    margin-left: 0;
-    height: 1rem;
-    border: 1px solid #616161;
+.bar {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 30px;
+  position: relative;
+  margin-left: 0;
+  height: 1rem;
+  border: 1px solid #616161;
 }
 
 .bar::-webkit-slider-runnable-track {
-    width: 1rem;
-    height: 1.5rem;
-    cursor: pointer;
-    background-color: #FFF;
-    border-radius: 20px;
-    border: none;
-    opacity: .7;
-    transition: all .5s;
-    outline: none;
-    text-align: center;
+  width: 1rem;
+  height: 1.5rem;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 20px;
+  border: none;
+  opacity: 0.7;
+  transition: all 0.5s;
+  outline: none;
+  text-align: center;
 }
 
 .bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50px;
-    background: var(--lila);
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #5b5b5b; 
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50px;
+  background: var(--lila);
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #5b5b5b;
 }

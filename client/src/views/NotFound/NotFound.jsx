@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import fondo from "../../Img/fondo1.JPG";
 
 const NotFound = () => {
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,12 +21,13 @@ const NotFound = () => {
       <div>
         <span
           className={styles.loader}
-          style={{  
+          style={{
             backgroundImage: `url(${fondo})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            width: '100%',
-            height: '100%',}}
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            width: "100%",
+            height: "100%",
+          }}
         ></span>
       </div>
     );
@@ -47,6 +48,6 @@ const NotFound = () => {
       </div>
     </div>
   );
-}
+};
 
 export default NotFound;
