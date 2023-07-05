@@ -29,7 +29,7 @@
   padding: 50px 40px;
   text-align: center;
   width: 45rem;
-  height: 30rem;
+  height: 35rem;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -194,4 +194,13 @@ select {
   background: var(--lila);
   cursor: pointer;
   box-shadow: 1px 1px 1px #5b5b5b;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  object-position: center;
+  top: 15px;
+  right: 90%;
+  transform: translateX(-50%);
 }

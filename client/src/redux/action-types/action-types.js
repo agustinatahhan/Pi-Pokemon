@@ -11,3 +11,5 @@ export const POST_POKEMON = "POST_POKEMON";
 export const DELETE_POKEMON = "DELETE_POKEMON";
 export const MODIFY_POKEMON = "MODIFY_POKEMON";
 export const POKEMON_ERROR = "POKEMON_ERROR";
+export const CREATE_USER = "CREATE_USER";
+export const LOGIN = "LOGIN";

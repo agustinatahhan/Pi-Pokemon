@@ -36,3 +36,17 @@
 .navlink:hover {
   opacity: 1;
 }
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  object-position: center;
+  top: 10px;
+  right: 95%;
+  transform: translateX(-50%);
+  opacity: .7;
+}
+
+.arrow:hover{
+  opacity: 1;
+}

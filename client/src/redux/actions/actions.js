@@ -9,7 +9,7 @@ import {
   FILTER_CREATED,
   FILTER_TYPES,
   DELETE_POKEMON,
-  POKEMON_ERROR,
+  CREATE_USER,
   MODIFY_POKEMON,
 } from "../action-types/action-types";
 import axios from "axios";
@@ -101,6 +101,44 @@ export const deletePokemon = (id) => {
     dispatch({ type: DELETE_POKEMON, payload: data });
   };
 };
+
+export const createUser = (user) => {
+  return async function () {
+    const response = await axios.post(
+      "http://localhost:3001/user/register", user);
+    return response;
+  };
+};
+
+// export const login = () => {
+//   return async function() {
+//     const response = await axios.post("http://localhost:3001/user/login", );
+//     return response
+//   }
+// }
+export const login = (user) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("http://localhost:3001/user/login", user);
+      const homeURL = response.data.homeURL;
+
+      // Redirigir al usuario al home si se recibe la URL del home en la respuesta
+      if (homeURL) {
+        window.location.href = homeURL;
+      }
+
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+
+
+
+
+
 
 // export const getModifyPokemons = (formModify) => {
 

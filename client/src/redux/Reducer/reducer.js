@@ -10,7 +10,9 @@ import {
   FILTER_CREATED,
   FILTER_TYPES,
   DELETE_POKEMON,
+  CREATE_USER,
   MODIFY_POKEMON,
+  LOGIN
 } from "../action-types/action-types";
 
 let initialState = {
@@ -60,6 +62,16 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+
+    case CREATE_USER:
+      return{
+        ...state
+      }
+    
+    case LOGIN:
+      return{
+        ...state
+      }
 
     case FILTER_NAME:
       let filtered =

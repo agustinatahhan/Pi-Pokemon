@@ -22,6 +22,7 @@
   align-items: center;
   justify-content: center;
   position: absolute;
+  gap: .7rem
 }
 
 .btn {

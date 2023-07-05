@@ -7,6 +7,8 @@ import Details from "./views/Details/Details";
 import Nav from "./Components/Nav/Nav";
 import Modify from "./views/Modify/Modify";
 import NotFound from "./views/NotFound/NotFound";
+import Login from "./views/Login/Login";
+import Account from "./views/Account/Account";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/not-found" element={<NotFound />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/account" element={<Account/>}/>
       </Routes>
     </div>
   );
